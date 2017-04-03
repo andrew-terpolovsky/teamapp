@@ -1,0 +1,114 @@
+[
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_assignee_changed",
+    "fields": {
+      "module": 1,
+      "html": "Task <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> has been assigned to <b>{{target.get_full_name}}</b> with a <b>{{task.due_date}}</b> due date. Priority: <b>{{task.get_priority_display}}</b>."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_created",
+    "fields": {
+      "module": 1,
+      "html": "Task <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> has been created with a <b>{{task.due_date}}</b> due date."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_date_changed",
+    "fields": {
+      "module": 1,
+      "html": "Task <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> due date has been changed to <b>{{task.due_date}}</b>."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_file_added",
+    "fields": {
+      "module": 1,
+      "html": "Added the <a target=\"_blank\" ng-href=\"{[getSingleDownloadLinkNoMessage({{target.id}})]}\"><b>{{target}}</b></a> attachment to <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> task."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_file_deleted",
+    "fields": {
+      "module": 1,
+      "html": "Deleted the <b>{{target}}</b> attachment from <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> task"
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_priority_changed",
+    "fields": {
+      "module": 1,
+      "html": "Task <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> priority has been changed to <b>{{task.get_priority_display}}</b>"
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "channel_task_status_changed",
+    "fields": {
+      "module": 1,
+      "html": "Task  <a href=\"\" ng-click=\"openTaskFromNotification({{task.id}})\">{{task}}</a> status has been changed to <b>{{task.get_status_display}}</b>"
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_assignee_changed",
+    "fields": {
+      "module": 0,
+      "html": "This task has been assigned to <b>{{target.get_full_name}}</b> with a <b>{{task.due_date}}</b> due date. Priority: <b>{{task.get_priority_display}}</b>."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_created",
+    "fields": {
+      "module": 0,
+      "html": "This task has been created with a <b>{{task.due_date}}</b> due date."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_date_changed",
+    "fields": {
+      "module": 0,
+      "html": "Due date has been changed to <b>{{task.due_date}}</b>."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_file_added",
+    "fields": {
+      "module": 0,
+      "html": "Added the <a target=\"_blank\" ng-href=\"{[getSingleDownloadLink({{target.id}})]}\"><b>{{target}}</b></a> attachment to this task."
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_file_deleted",
+    "fields": {
+      "module": 0,
+      "html": "Deleted the <b>{{target}}</b> attachment from this task"
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_priority_changed",
+    "fields": {
+      "module": 0,
+      "html": "This task priority has been changed to <b>{{task.get_priority_display}}</b>"
+    }
+  },
+  {
+    "model": "tasks.basetemplate",
+    "pk": "task_status_changed",
+    "fields": {
+      "module": 0,
+      "html": "This task status has been changed to <b>{{task.get_status_display}}</b>"
+    }
+  }
+]

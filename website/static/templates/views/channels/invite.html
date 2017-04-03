@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3 class="modal-title">Invite Friends</h3>
+    <button ng-click="closeDialog()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content tasks-manage">
+            <form class="form p-b-md" ng-submit="sendInvite()">
+
+                <div class="b-invite-friend__search" ng-class="{'has-errors': invite.errors.email}">
+                    <div class="b-invite-friend-search__search-input">
+                        <!--<input type="text" class="b-input b-input_search" id="email" name="email" placeholder="Enter emails separated with a comma" ng-model="invite.emails">-->
+                        <tags-input id="emails" class="b-input_search" add-on-enter="true" add-on-space="true" add-on-comma="true"
+                            placeholder="Enter emails separated with a comma"
+                            ng-model="invite.emails"
+                            allowed-tags-pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                        </tags-input>
+                    </div>
+                    <div class="b-invite-friend-search__submit-button">
+                        <button type="submit" class="btn btn-primary">Send Invite</button>
+                    </div>
+                </div>
+                <div class="error-block" form-errors="invite.errors.email"></div>
+
+                <div class="invite__members-list">
+                    <div class="members-list__item" ng-repeat="friend in friends" ng-click="openPrivateChat(friend)">
+                        <div class="b-modal-item b-modal-item_slim">
+                            <div class="b-modal-item__main">
+                                <div class="b-modal-item__column b-member-list-item__checkbox">
+                                    <input class="b-checkbox" type="checkbox" ng-model="friend.selected"/>
+                                </div>
+                                <div class="b-modal-item__column b-member-list-item__profile-fullname">
+                                    <span ng-bind="friend.full_name || friend.username" class="b-profile-fullname"></span>
+                                </div>
+                                <div class="b-modal-item__column b-member-list-item__profile-email">
+                                    <span ng-bind="friend.email" class="b-profile-fullname"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

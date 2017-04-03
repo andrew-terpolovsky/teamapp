@@ -1,0 +1,514 @@
+@import "variables";
+
+// Extra-Bold
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/montserrat/montserrat-black-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-black-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.woff2') format('woff2'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.ttf') format('truetype'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.svg#montserratblack') format('svg');
+  font-weight: 800;
+  font-style: normal;
+}
+
+// Bold
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/montserrat/montserrat-bold-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-bold-webfont.woff2') format('woff2'),
+  url('/static/fonts/montserrat/montserrat-bold-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-bold-webfont.ttf') format('truetype'),
+  url('/static/fonts/montserrat/montserrat-bold-webfont.svg#montserratbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+// Semi-Bold
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/montserrat/montserrat-regular-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-regular-webfont.woff2') format('woff2'),
+  url('/static/fonts/montserrat/montserrat-regular-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-regular-webfont.ttf') format('truetype'),
+  url('/static/fonts/montserrat/montserrat-regular-webfont.svg#montserratregular') format('svg');
+  font-weight: 600;
+  font-style: normal;
+
+}
+
+// Normal
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/montserrat/montserrat-light-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'),
+  url('/static/fonts/montserrat/montserrat-light-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-light-webfont.ttf') format('truetype'),
+  url('/static/fonts/montserrat/montserrat-light-webfont.svg#montserratlight') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Thin
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/montserrat/montserrat-hairline-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-hairline-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-hairline-webfont.woff2') format('woff2'),
+  url('/static/fonts/montserrat/montserrat-hairline-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-hairline-webfont.ttf') format('truetype'),
+  url('/static/fonts/montserrat/montserrat-hairline-webfont.svg#montserrathairline') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+// Extra-Bold
+@font-face {
+  font-family: 'GothamBook';
+  src: url('/static/fonts/montserrat/montserrat-black-webfont.eot');
+  src: url('/static/fonts/montserrat/montserrat-black-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.woff') format('woff'),
+  url('/static/fonts/montserrat/montserrat-black-webfont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.form-control {
+  border: 1px solid #ced5e6;
+  box-shadow: none;
+  font-weight: 500;
+  color: #3f4658;
+  @include border-radius(3px);
+
+  &:focus {
+    border-color: #adb6ce;
+    box-shadow: none;
+  }
+
+  &.input-lg, &.ui-select-search {
+    font-size: 15px;
+    height: 40px;
+    padding: 2px 12px;
+  }
+
+}
+
+html, body,
+body > div.ui-view,
+.container-fluid,
+.dashboard,
+.dashboard > .content-wrapper,
+.page-content {
+  height: 100%;
+}
+
+.page-content {
+  padding: 150px 30px 30px 30px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body.modal-open {
+  padding-right: 0 !important;
+}
+
+a:focus, *:focus {
+  outline: none;
+}
+
+.btn {
+  @include border-radius(3px);
+}
+
+.btn-global {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 16px;
+  height: 40px;
+  color: white;
+  line-height: 32px;
+
+  &:focus {
+    outline: none;
+  }
+
+  & > i {
+    vertical-align: middle;
+    margin: -4px 10px 0 0;
+  }
+
+  .btn-summary {
+    margin-left: 5px;
+    position: relative;
+    width: 25px;
+    display: inline-block;
+    text-align: center;
+    margin-right: -5px;
+
+    &:after {
+      content: "";
+      background: rgba(255, 255, 255, 0.54);
+      width: 1px;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      position: absolute;
+    }
+  }
+}
+
+.btn.btn-danger {
+  @extend .btn-global;
+  background-color: #ed6d6d;
+  border-color: #ed6d6d;
+
+  &:hover, &:active, &:focus {
+    background-color: #e36868;
+    border-color: #e36868;
+    color: white;
+  }
+}
+
+.btn.btn-primary {
+  @extend .btn-global;
+  background-color: #3c93da;
+  border-color: #3c93da;
+
+  &:hover, &:active, &:focus {
+    background-color: #398bce;
+    border-color: #398bce;
+    color: white;
+  }
+}
+
+.btn.btn-warning {
+  @extend .btn-global;
+  background-color: #d65f1a;
+  border-color: #d65f1a;
+
+  &:hover, &:active, &:focus {
+    background-color: #c95918;
+    border-color: #c95918;
+    color: white;
+  }
+}
+
+.btn.btn-dark {
+  @extend .btn-global;
+  background-color: #9099b0;
+  border-color: #9099b0;
+
+  &:hover, &:active, &:focus {
+    background-color: #808798;
+    border-color: #808798;
+    color: white;
+  }
+}
+
+@media (max-width: 1280px) {
+  .btn {
+    & > i {
+      display: none;
+    }
+    & > .btn-summary {
+      display: none !important;
+    }
+  }
+}
+
+h2 {
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+a {
+  color: #398bce;
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+.caret {
+  border: none;
+  background: url("/static/img/icon_sprite.png") 0 0 no-repeat;
+  width: 7px;
+  height: 4px;
+}
+
+.form-control, input[type=text], input[type=email], textarea {
+  &::-webkit-input-placeholder {
+    @include placeholder;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @include placeholder;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    @include placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    @include placeholder;
+  }
+}
+
+.has-error {
+  label {
+    color: $error-color;
+  }
+
+  .form-control, input[type=text], input[type=email], textarea {
+    border-color: $error-color;
+
+    &::-webkit-input-placeholder {
+      color: $error-color;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $error-color;
+    }
+
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $error-color;
+    }
+
+    &:-ms-input-placeholder {
+      color: $error-color;
+    }
+  }
+}
+
+.dashboard .sidebar-wrapper .sidebar-nav ul.dropdown-menu, ul.dropdown-menu {
+  border: 0;
+  @include border-radius(0);
+  box-shadow: 7px 8px 50px 0 rgba(0, 0, 0, 0.3);
+  padding: 10px 0;
+  z-index: 1;
+
+  & > li {
+    a, .ui-select-choices-row > a {
+      color: #7e89a5;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 6px 25px;
+      margin: 5px 0;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      i {
+        margin-right: 8px;
+      }
+    }
+
+    &.active > a, &.active > a:hover {
+      color: #3f4658;
+      cursor: default;
+      background: transparent;
+    }
+  }
+}
+
+/* spaces */
+.p-t-sm {
+  padding-top: 5px;
+}
+
+.p-t {
+  padding-top: 10px;
+}
+
+.p-t-md {
+  padding-top: 15px;
+}
+
+.p-t-lg {
+  padding-top: 70px;
+}
+
+.p-b-sm {
+  padding-bottom: 5px;
+}
+
+.p-b {
+  padding-bottom: 10px;
+}
+
+.p-b-md {
+  padding-bottom: 15px;
+}
+
+.p-b-lg {
+  padding-bottom: 70px;
+}
+
+.p-t-lg {
+  padding-top: 70px;
+}
+
+.m-b-0 {
+  margin-bottom: 0 !important;
+}
+
+.w-200 {
+  width: 200px;
+}
+
+.w-300 {
+  width: 300px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.table {
+  & > thead > tr > th {
+    color: #a6b1cc;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #e6eaf3;
+  }
+
+  &.table-hover > tbody > tr:hover {
+    background-color: #f9fafb;
+  }
+
+  & > tbody > tr td {
+    vertical-align: middle;
+  }
+}
+
+.page-title {
+  text-align: right;
+
+  & > span {
+    float: left;
+  }
+
+  & .filter {
+    font-size: 15px;
+    color: #3f4658;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-align: left;
+
+    .dropdown {
+      display: inline-block;
+
+      .dropdown-menu {
+        top: -2px;
+      }
+
+      & > a {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #7e89a5;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+
+        &:hover {
+          color: #7e89a5;
+          text-decoration: none;
+        }
+
+        .caret {
+          margin-left: 7px;
+        }
+      }
+
+    }
+  }
+}
+
+.b-label_required:after {
+  content: '*';
+  color: #d65f1a;
+  font-size: 18px;
+  padding-left: 3px;
+}
+
+.b-header {
+  font-size: 24px;
+  text-align: left;
+  margin: 0;
+  line-height: 55px;
+}
+
+.b-title.b-title_filter {
+  text-align: right;
+}
+
+.b-input.b-input_textarea {
+  min-height: 80px;
+}
+
+.toast-message a {
+  border-bottom: 1px solid #fff;
+}
+
+.ripple-svg {
+  position: relative;
+  box-sizing: border-box;
+  width: 64px;
+  height: 30px;
+}
+
+.ripple-svg {
+  position: absolute;
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+
+  circle {
+    fill: none;
+    stroke: #3c93da;
+    stroke-width: 8px;
+    opacity: 0;
+    animation: ripple 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s infinite;
+
+    &.middle-circle {
+      animation-delay: 1s;
+      stroke: #a8a8b0;
+    }
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.2, 0.2, 0.2);
+    transform-origin: center center 0;
+  }
+  55% {
+    opacity: 1;
+    transform-origin: center center 0;
+  }
+  100% {
+    transform: scale3d(0.95, 0.95, 0.95);
+    opacity: 0;
+    transform-origin: center center 0;
+    stroke-width: 4px;
+  }
+}
+
+
+.ui-view.view-animation {
+  height: 100%;
+}

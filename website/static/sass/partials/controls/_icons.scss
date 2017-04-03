@@ -1,0 +1,231 @@
+.icon {
+  background: url("/static/img/icon_sprite.png") 0 0 no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.resend-icon {
+  background-position: -60px -150px;
+  width: 22px;
+}
+
+.chat-icon {
+    background-position: 0px -300px;
+    width: 16px;
+    height: 16px;
+}
+
+.attachments-icon {
+    background-position: -29px -300px;
+    width: 16px;
+    height: 16px;
+}
+
+.time-icon {
+    background-position: -60px -300px;
+    width: 16px;
+    height: 16px;
+}
+
+.image-icon {
+  background-position: -30px 1px;
+}
+
+.invite-icon {
+  background-position: 0 -32px;
+}
+
+.tasks-icon {
+  background-position: 0 -60px;
+  width: 19px;
+}
+
+.team-icon {
+  background-position: 0 -90px;
+  width: 21px;
+}
+
+.other-icon {
+  background-position: 0 -119px;
+}
+
+.add-task-icon {
+  background-position: -60px -30px;
+  width: 20px;
+}
+
+.manage-task-icon {
+  background-position: -90px 0;
+  width: 20px;
+}
+
+.send-invite-icon {
+  background-position: -60px 0;
+  width: 20px;
+}
+
+.more-icon {
+    background-position: -59px -176px;
+    width: 24px;
+    height: 5px;
+}
+
+.plus-icon {
+  background-position: -15px -10px;
+  height: 12px;
+  width: 12px;
+}
+
+.notification-icon {
+  background-position: 0px -210px;
+  height: 16px;
+  width: 16px;
+}
+
+.delete-menu-icon {
+  background-position: -60px -60px;
+  height: 19px;
+  width: 19px;
+}
+.chat-menu-icon {
+  background-position: -60px -90px;
+  height: 19px;
+  width: 19px;
+}
+.other-menu-icon {
+  background-position: -60px -120px;
+  height: 19px;
+  width: 19px;
+}
+
+.active > .tasks-icon, .active.tasks-icon {
+  background-position: -30px -60px;
+}
+
+.active > .team-icon, .active.team-icon {
+  background-position: -30px -90px;
+}
+
+.active > .other-icon, .active.other-icon {
+  background-position: -30px -119px;
+}
+
+
+.big-close-icon {
+    background-position: -66px -240px;
+    width: 23px;
+    height: 23px;
+}
+
+.big-edit-icon {
+    background-position: -60px -270px;
+    width: 20px;
+    height: 20px;
+}
+
+
+.status-unassigned,
+.status-started, .status-0{
+  background-position: 0 -232px;
+  height: 16px;
+  width: 16px;
+}
+
+//.status-started, .status-0 {
+//  background-position: -21px -210px;
+//  height: 16px;
+//  width: 16px;
+//}
+
+.status-in-progress, .status-1 {
+  background-position: 0 -210px;
+  height: 16px;
+  width: 16px;
+}
+
+.status-stopped, .status-2 {
+  background-position: -44px -232px;
+  height: 16px;
+  width: 16px;
+}
+
+.status-completed, .status-3 {
+  background-position: -21px -232px;
+  height: 16px;
+  width: 16px;
+}
+
+/* TODO merge with main sprite */
+
+.icon-chat {
+  background: url("/static/img/chat_sprite.png") 0 0 no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.icon-chat.attachments-icon {
+  background-position: -35px -26px;
+  height: 22px;
+  width: 22px;
+}
+
+.icon-chat.attachments-icon:hover,
+.icon-chat.attachments-icon.active {
+  background-position: -35px 0;
+  height: 22px;
+  width: 22px;
+}
+
+.icon-chat.send-icon {
+  background-position: 0px -52px;
+  height: 22px;
+  width: 22px;
+}
+
+.icon-chat.submenu-icon {
+  background-position: 0px -77px;
+  height: 20px;
+  width: 20px;
+}
+
+.icon-chat.download-icon {
+  background-position: -99px -54px;
+  height: 20px;
+  width: 20px;
+}
+
+.icon-chat.alpha-icon {
+  background-position: 0px -24px;
+  height: 22px;
+  width: 30px;
+}
+
+.icon-chat.alpha-icon:hover,
+.icon-chat.alpha-icon.active {
+  background-position: 0px 1px;
+  height: 22px;
+  width: 30px;
+}
+
+.icon-chat.add-member-icon {
+  background-position: -40px -80px;
+  height: 20px;
+  width: 20px;
+}
+
+.icon-chat.emoji-icon {
+  background-position: -68px -27px;
+  height: 22px;
+  width: 30px;
+}
+
+.icon-chat.emoji-icon:hover,
+.icon-chat.emoji-icon.active {
+  background-position: -68px 0px;
+  height: 22px;
+  width: 30px;
+}

@@ -1,0 +1,48 @@
+{% load staticfiles compress %}
+<!DOCTYPE html>
+<html lang="en" ng-app="DoIqApp">
+<head>
+    <title page-title></title>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="robots" content="noindex">
+    <meta name="author" content="DoIQApp">
+    <link rel="shortcut icon" type="image/ico" href="{% static 'img/favicon.ico' %}">
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss"
+              href="{% static 'bower_components/angular-toastr/dist/angular-toastr.css' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static "sass/main.scss" %}">
+    {% endcompress %}
+    <link rel="stylesheet" href="{% static 'bower_components/wdt-emoji-bundle/wdt-emoji-bundle.css' %}">
+    {% compress js %}
+        <script src="{% static 'js/build/doiqapp-vendor.js' %}"></script>
+        <script src="{% static 'js/build/doiqapp.js' %}"></script>
+        <script src="{% static 'bower_components/wdt-emoji-bundle/emoji.min.js' %}"></script>
+    {% endcompress %}
+    <script src="{% static 'bower_components/wdt-emoji-bundle/wdt-emoji-bundle.js' %}"></script>
+</head>
+<body>
+{% if messages|length %}
+    <ul class="m-b-0">
+    {% for message in messages %}
+        <li class="alert alert-dismissible alert-{{ message.tags }}" role="alert"
+             style="position: absolute; z-index: 10; left: 50%; margin-left: -200px; top: 14px;width: 400px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul>
+                <li>{{ message|safe }}</li>
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% block content %}
+    <div class="ui-view"></div>
+{% endblock %}
+{% csrf_token %}
+</body>
+</html>

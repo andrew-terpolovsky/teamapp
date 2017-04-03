@@ -1,0 +1,14 @@
+<div class="media-left">
+    <a href="#">
+        <img class="media-object" ng-src="{[message.sender.image || '/static/img/profile.png']}">
+    </a>
+</div>
+<div class="media-body">
+    <h4 class="media-heading">
+        <a href="" ng-click="openPrivateChatWithChannelMember(message)" ng-bind="(message.sender.full_name||message.sender.username)|short_name"></a>
+        <i></i>
+        <span ng-bind="message.created|amParse:'YYYY-MM-DDTHH:mm:ss.SSSZ'| amLocal | amDateFormat:'MM.DD.YYYY HH:mm:ss'"></span>
+    </h4>
+
+    <p compile-message content="message.message"></p>
+</div>

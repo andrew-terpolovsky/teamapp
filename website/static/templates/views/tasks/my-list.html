@@ -1,0 +1,97 @@
+<div class="page-title">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="b-header">My Tasks</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="filter b-title b-title_filter">
+                        Filter by:
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="filter">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" type="button" id="invites-filter" data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="true">
+                                {[filter_options[filter.by]]}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="invites-filter">
+                                <li ng-repeat="(k, v) in filter_options" ng-class="{active: filter.by == k}">
+                                    <a href="" ng-click="filterBy(k)" ng-bind="v"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary" ng-click="createTask()">
+                        <i class="icon add-task-icon"></i> Add Task
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+    <div class="tasks-wrapper scrollbar-inner">
+        <div class="tasks" ng-show="!empty">
+            <div ng-repeat="(k, tasks) in group_task" ng-show="tasks.length">
+                <div class="tasks-list">
+                    <h2>
+                        <span ng-bind="titles[k]"></span>
+                        <span class="right">
+                            (<span ng-bind="tasks.length"></span>)
+                        </span>
+                    </h2>
+                    <div class="scrollbar-macosx">
+                        <div class="task-item" ng-repeat="task in tasks" ng-click="openTask(tasks, $index, k)"
+                             ng-class="{archived: task.done}">
+                            <div class="top-line" ng-class="['line-' + task.status]">
+                                <i class="icon"
+                                   ng-class="['status-' + task.status]"
+                                   uib-tooltip="{[task.get_status_display]}"
+                                   tooltip-placement="right">
+                                </i>
+                                <span class="title" ng-bind="task.name"></span>
+                            </div>
+                            <div ng-if="task.preview" class="preview"
+                                 ng-style="{'background-image': '{[task.preview]}' }">
+                            </div>
+                            <div class="middle-line">
+                                <div class="assignee" ng-bind="task.assignee.get_full_name || task.owner.get_full_name">
+                                </div>
+                                <div class="channel" ng-show="task.related_channel">
+                                    #{[task.related_channel_name]}
+                                </div>
+                                <img class="img-circle"
+                                     ng-show="task.assignee.get_picture || task.owner.get_picture"
+                                     ng-src="{[task.assignee.get_picture || task.owner.get_picture]}"
+                                     alt="" src="">
+                            </div>
+                            <ul class="clearfix">
+                                <li>
+                                    <i class="icon chat-icon"></i>
+                                    <span ng-bind="task.activity_count"></span>
+                                </li>
+                                <li>
+                                    <i class="icon attachments-icon"></i>
+                                    <span ng-bind="task.files.length"></span>
+                                </li>
+                                <li ng-class="{expired: task.expired}">
+                                    <i class="icon time-icon"></i>
+                                    <span ng-bind="task.due_date|date:'MMM d, yyyy'"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-center" ng-show="empty && !loading">You have no tasks</h2>
+    </div>
+</div>
+

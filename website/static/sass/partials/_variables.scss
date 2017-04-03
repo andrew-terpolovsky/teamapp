@@ -1,0 +1,17 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin placeholder {
+  color: #7f89a5;
+  font-weight: normal;
+}
+
+$brand-primary: #3c93da !default;
+$error-color: #ed6d6d !important;
+$header-height: 100px;
+$side-menu-width: 270px;
+

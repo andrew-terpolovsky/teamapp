@@ -1,0 +1,213 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        <span ng-show="!task.id">Create task</span>
+        <span ng-show="task.id">Manage task</span>
+    </h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content tasks-manage">
+            <div class="row">
+                <div class="col-sm-6 activity" ng-show="task.id">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Activity">
+                            <ul class="activity-list">
+                                <li ng-repeat="item in activities|filter:{system:true}">
+                                    <div>
+                                        <span class="img-circle avatar"
+                                              ng-style="updateAvatar(item.sender.get_picture)">
+                                        </span>
+                                        <div>
+                                            <div class="header clearfix">
+                                                <span ng-bind="item.sender.get_full_name"></span>
+                                                <span class="timestamp" ng-bind="item.created|date:'MMM d, yyyy HH:mm'">
+                                                </span>
+                                            </div>
+                                            <div ng-bind-html="item.comment"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="empty" ng-show="!(activities|filter:{system:true}).length">
+                                Task has no activity
+                            </div>
+                        </uib-tab>
+                        <uib-tab index="1" heading="Comments">
+                            <br>
+                            <form class="form hide" ng-submit="sendActivity()"
+                                  ng-class="{'has-errors': activity.errors.comment, show: !task.done}">
+                                <div class="form-group">
+                                    <textarea id="comment" class="form-control"
+                                              placeholder="Place your comment here"
+                                              ng-model="activity.comment"></textarea>
+                                </div>
+                                <div class="row p-b-md p-t-sm">
+                                    <div class="col-sm-7">
+                                        <div class="error-block" form-errors="activity.errors.comment"></div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <button type="button" class="btn btn-block btn-primary"
+                                                ng-click="sendActivity()">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <ul class="activity-list">
+                                <li ng-repeat="item in activities|filter:{system:false}">
+                                    <div>
+                                        <span class="img-circle avatar"
+                                              ng-style="updateAvatar(item.sender.get_picture)">
+                                        </span>
+                                        <div>
+                                            <div class="header clearfix">
+                                                <span ng-bind="item.sender.get_full_name"></span>
+                                                <span class="timestamp" ng-bind="item.created|date:'MMM d, yyyy HH:mm'">
+                                                </span>
+                                            </div>
+                                            <div compile-message content="item.comment"></div>
+                                            <a href="" ng-if="user.id == item.sender.id && !task.done"
+                                               ng-click="deleteComment(item, $index)">Delete</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="empty" ng-show="!(activities|filter:{system:false}).length">
+                                Task has no comments
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+
+                </div>
+                <div class="col-sm-6 task" ng-class="{'col-sm-12': !task.id}">
+                    <form class="form" ng-submit="saveTask()">
+                        <div class="row p-b-md">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-danger btn-block" ng-click="deleteTask()"
+                                        ng-if="isDelete()">
+                                    Archive
+                                </button>
+                            </div>
+                            <div class="col-xs-6 hide" ng-class="{show: !task.done}">
+                                <button type="submit" class="btn btn-primary btn-block">Save</button>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-errors': task.errors.name}">
+                            <label for="name">Task name</label>
+                            <input id="name" class="form-control hide" ng-model="task.name"
+                                   ng-class="{show: owner && !task.done}">
+
+                            <div class="hide" ng-class="{show: !owner || task.done}" ng-bind="task.name"></div>
+                            <div class="error-block" form-errors="task.errors.name"></div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-errors': task.errors.priority}">
+                            <label for="priority">Priority</label>
+                            <ui-select ng-model="task.priority" class="hide" ng-class="{show: owner && !task.done}">
+                                <ui-select-match placeholder="Choose priority">
+                                    {[$select.selected.name]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="priority in priorities | filter: $select.search">
+                                    <span ng-bind-html="priority.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <div class="hide" ng-class="{show: !owner || task.done}"
+                                 ng-bind="task.priority.name"></div>
+                            <div class="error-block" form-errors="task.errors.priority"></div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-errors': task.errors.due_date}">
+                            <label for="due_date">Due date</label>
+                            <input class="form-control hide"
+                                   ng-class="{show: owner && !task.done}"
+                                   uib-datepicker-popup
+                                   ng-model-options={timezone:'UTC/GMT'}
+                                   id="due_date"
+                                   is-open="picker_opened"
+                                   ng-model="task.due_date"
+                                   ng-click="openDatePicker()"
+                                   show-button-bar="false"
+                                   datepicker-options="datePickerOptions">
+
+                            <div class="hide" ng-class="{show: !owner || task.done}"
+                                 ng-bind="task.due_date|date:'MMM d, yyyy'"></div>
+                            <div class="error-block" form-errors="task.errors.due_date"></div>
+                        </div>
+                        <div class="form-group" ng-show="task.id" ng-class="{'has-errors': task.errors.status}">
+                            <label for="status">Status</label>
+                            <ui-select class="hide" ng-model="task.status" ng-class="{show: !task.done}">
+                                <ui-select-match placeholder="Choose status">
+                                    {[$select.selected.name]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="status in statuses | filter: $select.search">
+                                    <span ng-bind-html="status.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <div class="hide" ng-class="{show: task.done}" ng-bind="task.status.name"></div>
+                            <div class="error-block" form-errors="task.errors.status"></div>
+                        </div>
+                        <div class="form-group"
+                             ng-if="(task.related_channel && task.id) || !task.id"
+                             ng-class="{'has-errors': task.errors.related_channel}">
+                            <label for="name">Related channel</label>
+                            <ui-select ng-model="task.related_channel" class="hide" ng-change="changeChannel()"
+                                       ng-class="{show: !task.id && !channel_task}">
+                                <ui-select-match placeholder="Choose related channel">
+                                    {[$select.selected.name]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="channel in channels | filter: $select.search">
+                                    <span ng-bind-html="channel.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <div class="hide bold" ng-class="{show: task.id || channel_task}">
+                                #{[task.related_channel.name]}
+                            </div>
+                            <div class="error-block" form-errors="task.errors.related_channel"></div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-errors': task.errors.assignee}">
+                            <label for="assignee">Assignee</label>
+                            <ui-select class="hide" ng-model="task.assignee" ng-class="{show: !task.done}">
+                                <ui-select-match placeholder="Enter username">
+                                    {[$select.selected.get_full_name]}
+                                </ui-select-match>
+                                <ui-select-choices repeat="data in friends | filter: $select.search">
+                                    <div class="friend-list-item">
+                                        <div class="img-circle avatar" ng-style="updateAvatar(data.get_picture)">
+                                        </div>
+                                        <div class="text">
+                                            <span ng-bind="data.get_full_name || data.email"></span>
+                                            <span class="highlight"
+                                                  ng-bind-html="data.username | highlight: $select.search"></span>
+                                        </div>
+                                    </div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <div class="hide" ng-class="{show: task.done}" ng-bind="task.assignee.get_full_name">
+                            </div>
+                            <div class="error-block" form-errors="task.errors.assignee"></div>
+                        </div>
+
+                        <div class="form-group hide" ng-class="{'has-errors': task.errors.files, show: !task.done}">
+                            <a href="" id="add-files" ng-click="addFiles()">
+                                <i class="icon plus-icon"></i> Add files
+                            </a>
+                            <ul class="files-list files-interactive files-delete" ng-show="task.files.length">
+                                <li ng-repeat="file in task.files">
+                                    <div class="delete" ng-if="file.owner==user.id || owner"
+                                         ng-click="deleteFile($index)"></div>
+                                    <a ng-href="{[getSingleDownloadLink(file.id)]}" target="_blank"
+                                       ng-bind="file.original_name"></a>
+                                    <div>
+                                        <span ng-bind="file.content_type"></span>
+                                        <span ng-bind="file.size|bytes"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="error-block" form-errors="task.errors.files"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

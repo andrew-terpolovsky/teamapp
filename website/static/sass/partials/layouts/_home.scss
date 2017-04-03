@@ -1,0 +1,81 @@
+.home-wrapper {
+  min-height: 100%;
+  background: url("/static/img/bg.jpg") top center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
+  position: relative;
+  padding-bottom: 50px;
+
+  & > * {
+    z-index: 1;
+    position: relative;
+  }
+
+  &:before {
+    content: "";
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.8) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.8) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.8) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.8) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.64) 50%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.8) 100%);
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+
+  nav {
+    a.logo {
+      background: url("/static/img/logo-small.png") center center no-repeat;
+      width: 120px;
+      height: 61px;
+      float: left;
+      background-size: contain;
+      margin: 15px 0 0 15px;
+
+    }
+
+    ul {
+      float: right;
+      padding: 20px 25px;
+
+      a.btn-sign-up {
+        margin-left: 17px;
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #b5b5b5;
+    text-align: center;
+    padding: 12px 10px 13px 10px;
+    height: 44px;
+    border-top: 1px solid #404040;
+    box-shadow: 1px 1px 1px 1px black;
+  }
+}
+
+a.btn-sign-up {
+  display: inline-block;
+  padding: 10px 14px 12px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12pt;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.75);
+  height: 45px;
+  min-width: 120px;
+
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .75);
+    color: white;
+  }
+}

@@ -1,0 +1,60 @@
+<div class="page-title">
+    <span>Archived Tasks</span>
+    <button class="btn btn-primary" ng-click="createTask()">
+        <i class="icon add-task-icon"></i> Add Task
+    </button>
+</div>
+<div class="page-content">
+    <div class="tasks-wrapper scrollbar-macosx">
+        <div class="tasks" ng-show="!empty">
+            <div ng-repeat="(k, tasks) in group_task" ng-show="tasks.length">
+                <div class="tasks-list">
+                    <h2>
+                        <span>#{[k]}</span>
+                        <span class="right">
+                            (<span ng-bind="tasks.length"></span>)
+                        </span>
+                    </h2>
+                    <div class="scrollbar-macosx">
+                        <div class="task-item" ng-repeat="task in tasks" ng-click="openTask(tasks, $index, k)">
+                            <div class="top-line" ng-class="['line-' + task.status]">
+                                <i class="icon"
+                                   ng-class="['status-' + task.status]"
+                                   uib-tooltip="{[task.get_status_display]}"
+                                   tooltip-placement="right">
+                                </i>
+                                <span class="title" ng-bind="task.name"></span>
+                            </div>
+                            <div ng-if="task.preview" class="preview"
+                                 ng-style="{'background-image': '{[task.preview]}' }">
+                            </div>
+                            <div class="middle-line">
+                                <div class="assignee" ng-bind="task.assignee.get_full_name || task.owner.get_full_name">
+                                </div>
+                                <img class="img-circle"
+                                     ng-show="task.assignee.get_picture || task.owner.get_picture"
+                                     ng-src="{[task.assignee.get_picture || task.owner.get_picture]}"
+                                     alt="" src="">
+                            </div>
+                            <ul class="clearfix">
+                                <li>
+                                    <i class="icon chat-icon"></i>
+                                    <span ng-bind="task.activity_count"></span>
+                                </li>
+                                <li>
+                                    <i class="icon attachments-icon"></i>
+                                    <span ng-bind="task.files.length"></span>
+                                </li>
+                                <li>
+                                    <i class="icon time-icon"></i>
+                                    <span ng-bind="task.due_date|date:'MMM d, yyyy'"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-center" ng-show="empty && !loading">You have no team tasks</h2>
+    </div>
+</div>

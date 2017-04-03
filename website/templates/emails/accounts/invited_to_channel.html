@@ -1,0 +1,9 @@
+{% extends 'emails/base.html' %}
+
+{% block content %}
+    <div style="font-size: 18px;padding-bottom: 5px;color:white;">Hello -</div>
+    <p style="color:white;">{{ inviter.username }} had connect you to channel {{ channel.name }}</p>
+    <div style="text-align: center">
+    </div>
+{% endblock %}
+

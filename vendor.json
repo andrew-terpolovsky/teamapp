@@ -1,0 +1,30 @@
+{
+  "app": [
+    "./website/static/bower_components/jquery/dist/jquery.min.js",
+    "./website/static/bower_components/plupload/js/plupload.full.min.js",
+    "./website/static/bower_components/jstimezonedetect/jstz.js",
+    "./website/static/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+    "./website/static/bower_components/jquery.scrollbar/jquery.scrollbar.min.js",
+    "./website/static/bower_components/angular/angular.min.js",
+    "./website/static/bower_components/angular-route/angular-route.min.js",
+    "./website/static/bower_components/angular-cookies/angular-cookies.min.js",
+    "./website/static/bower_components/angular-resource/angular-resource.min.js",
+    "./website/static/bower_components/angular-animate/angular-animate.min.js",
+    "./website/static/bower_components/angular-sanitize/angular-sanitize.min.js",
+    "./website/static/bower_components/angular-ui-router/release/angular-ui-router.min.js",
+    "./website/static/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+    "./website/static/bower_components/angular-toastr/dist/angular-toastr.tpls.js",
+    "./website/static/bower_components/angular-ui-select/dist/select.min.js",
+    "./website/static/bower_components/sockjs/sockjs.min.js",
+    "./website/static/bower_components/angular-uuid4/angular-uuid4.min.js",
+    "./website/static/bower_components/ng-tags-input/ng-tags-input.min.js",
+    "./website/static/bower_components/moment/min/moment-with-locales.min.js",
+    "./website/static/bower_components/moment-timezone/moment-timezone-with-data.js",
+    "./website/static/bower_components/angular-moment/angular-moment.min.js",
+    "./website/static/bower_components/angular-elastic/elastic.js",
+    "./website/static/bower_components/angular-audio/app/angular.audio.js",
+    "./website/static/bower_components/rangy/rangy-core.min.js",
+    "./website/static/bower_components/rangyinputs/rangyinputs-jquery.js",
+    "./website/static/bower_components/ng-emoticons"
+  ]
+}

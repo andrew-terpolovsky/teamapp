@@ -1,0 +1,22 @@
+.b-more {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 220px;
+  &:after {
+    content: "";
+	pointer-events: none;
+	position: absolute;
+	width: 30px;
+	height: 100%;
+	top: 0; right: 0;
+
+	background-image: -webkit-linear-gradient(right, #efefef, rgba(255, 255, 255, 0));
+	background-image: -moz-linear-gradient(right, #efefef, rgba(255, 255, 255, 0));
+	background-image: -ms-linear-gradient(right, #efefef, rgba(255, 255, 255, 0));
+	background-image: -o-linear-gradient(right, #efefef, rgba(255, 255, 255, 0));
+	background-image: linear-gradient(to left, #efefef, rgba(255, 255, 255, 0));
+  }
+}

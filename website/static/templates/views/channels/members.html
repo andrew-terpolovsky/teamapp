@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Channel members</h3>
+    <button ng-click="closeDialog()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content channel-members">
+            <div class="b-channel-members__item" ng-repeat="member in members|orderBy:'online_status'" ng-click="openPrivateChatWithChannelMember(member)">
+                <div class="b-modal-item b-modal-item_link">
+                    <div class="b-modal-item__main">
+                        <div class="b-modal-item__column b-channel-member-item__profile-image">
+                            <img width="52" ng-src="{[member.image || '/static/img/profile.png']}" alt="{[member.username]}" class="img-circle b-profile-image">
+                        </div>
+                        <div class="b-modal-item__column b-channel-member-item__profile-fullname">
+                            <span ng-bind="member.full_name || member.username" class="b-profile-fullname"></span>
+                        </div>
+                        <div class="b-modal-item__column b-channel-member-item__actions">
+                            <div class="b-channel-member-item-action" ng-if="is_owner">
+                                <a href="javascript:void(0);" class="b-button" ng-click="kickMember($event, member)">Remove</a>
+                            </div>
+                            <div class="b-channel-member-item-action" ng-if="is_owner">
+                                <a href="javascript:void(0);" class="b-button" ng-click="giveOwnership($event, member)">Give ownership</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-modal-item__footer">
+                        <div class="b-modal-item-footer">
+                            <div class="b-modal-item-footer__row">
+                                <div class="b-modal-item-footer-row">
+                                    <span class="b-modal-item-footer-row-title">Status:</span>
+                                    <span class="b-modal-item-footer-row-value" ng-bind="member.online_status ? 'online' : 'offline'"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+</div>

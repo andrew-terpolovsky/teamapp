@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        Create Channel
+    </h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content manage-channel b-create-channel__form">
+            <form class="form" ng-submit="saveChannel()">
+                <div class="form-group" ng-class="{'has-errors': channel.errors.name}">
+                    <label class="b-label b-label_required" for="name">Name</label>
+                    <input class="form-control input-lg" id="name" ng-model="channel.name">
+                    <div class="error-block" form-errors="channel.errors.name"></div>
+                </div>
+                <div class="form-group" ng-class="{'has-errors': channel.errors.description}">
+                    <label for="description">Description</label>
+                    <textarea rows="10" msd-elastic="\n" style="transition: all 0.1s ease-in-out; resize: none;"
+                        id="description" class="form-control b-input b-input_textarea"
+                        ng-model="channel.description"></textarea>
+
+                    <div class="error-block" form-errors="channel.errors.description"></div>
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

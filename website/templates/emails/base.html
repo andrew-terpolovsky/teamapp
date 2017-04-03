@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>{{ subject }}</title>
+</head>
+<body style="margin: 0;background-color: #d1d4d6;">
+<table style="width: 100%;background-color: #d1d4d6;padding: 30px 0">
+    <tr>
+        <td style="font-family: 'Arial', sans-serif;padding-top: 15px;">
+            <table style="width: 600px;margin: 0 auto;border: 0;border-collapse: collapse;border-spacing: 0;background-color: #ffffff;text-align: left;border-radius: 4px;-webkit-border-radius: 4px;-moz-border-radius: 4px;">
+                <tr>
+                    <td style="padding: 16px 25px 14px 25px;border-radius: 4px;font-size: 12px;    border-bottom: 3px solid #4299cb;text-align: left;background: #2e313c;">
+                        <img src="{{ domain }}/static/img/logo-small.png" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 40px;font-size: 14px;line-height: 23px;text-align: justify;height: 180px;vertical-align: top;color: white;background: #5f6479;">
+                        <div style="min-height: 100px;">
+                             {% block content %}
+                        {% endblock content %}
+                        </div>
+                        <div style="font-weight: bold;padding: 12px 0;color: #dbeffb;line-height: 1.2em;font-family: 'Arial', sans-serif;">
+                            Thank you for your interest in DOIQ.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; padding: 15px;font-size: 14px;border-top: 3px solid #4299cb;font-family: 'Arial', sans-serif;background: #2e313c;">
+                        <a href="http://doiqapp.com/" style="text-decoration: none;color: #4698cb;vertical-align: middle">
+                            website
+                        </a>
+                        <span style="width: 1px; background-color: #fbfbfb; display: inline-block; border-right: 1px solid #a6a6a6; height: 11px; vertical-align: middle; margin: 0 2px;"></span>
+                        <a href="http://doiqapp.com/pricing/#pre-sale" style="text-decoration: none;color: #4698cb;vertical-align: middle">
+                            contact
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <div style="font-size: 12px;padding: 15px;color:#808080;text-align: center;line-height: 16px;font-family: 'Arial', sans-serif;">
+                This email was sent from notification-only email address that cannot accept incoming email.<br>
+                &copy; {% now 'Y' %} DOIQ, LLC
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

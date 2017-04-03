@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title">Friends list</h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content channel-members">
+            <div class="members-list">
+                <div class="members-list__item" ng-repeat="friend in friends" ng-click="openPrivateChat(friend)">
+                    <div class="b-modal-item b-modal-item_link b-modal-item_slim">
+                        <div class="b-modal-item__main">
+                            <div class="b-modal-item__column b-member-list-item__profile-image">
+                                <img width="52" ng-src="{[friend.image || '/static/img/profile.png']}" alt="{[member.username]}" class="img-circle b-profile-image">
+                            </div>
+                            <div class="b-modal-item__column b-member-list-item__profile-fullname">
+                                <span ng-bind="friend.full_name" class="b-profile-fullname"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+</div>
+

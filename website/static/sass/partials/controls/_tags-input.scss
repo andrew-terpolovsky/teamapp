@@ -1,0 +1,171 @@
+@import "../variables";
+
+tags-input {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  min-height: 34px;
+
+  .host {
+    margin: 0;
+    position: relative;
+
+    &.focused, &:focus {
+      outline: none;
+    }
+  }
+
+  &.ng-invalid {
+    .input {
+      color: #ed6d6d !important;
+    }
+  }
+
+  .tags {
+    border: 1px solid #ced5e6;
+    font-weight: 600;
+    color: #3f4658;
+    @include border-radius(3px);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    background: white;
+    padding: 2px 8px;
+    line-height: 32px;
+    min-height: 40px;
+    overflow: hidden;
+
+    &.focused, &:focus {
+      border-color: #adb6ce;
+      outline: none;
+    }
+
+    ul.tag-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      .tag-item {
+        color: #fff;
+        background: #d65f1a;
+        border: 1px solid #d65f1a;
+        border-radius: 2px;
+        display: inline-block;
+        float: left;
+        height: 30px;
+        padding: 0 10px;
+        line-height: 28px;
+        margin: 2px 4px 2px 0;
+        cursor: default;
+
+        a.remove-button {
+          display: inline-block;
+          background: url(/static/img/icon_sprite.png) -59px -209px no-repeat;
+          width: 11px;
+          font-size: 0;
+          color: transparent;
+          height: 12px;
+          vertical-align: middle;
+          cursor: pointer;
+          margin-right: -2px;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    .input {
+      height: 34px;
+      border: 0 none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #3f4658;
+      float: left;
+      width: 100%;
+      background: transparent;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.invalid-tag {
+        color: #ed6d6d;
+      }
+
+      &::-webkit-input-placeholder {
+        @include placeholder;
+      }
+
+      &:-moz-placeholder {
+        /* Firefox 18- */
+        @include placeholder;
+      }
+
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        @include placeholder;
+      }
+
+      &:-ms-input-placeholder {
+        @include placeholder;
+      }
+    }
+  }
+
+  &[disabled] {
+    .tags {
+      background-color: #eee;
+
+      .tag-item {
+        opacity: 0.65;
+      }
+
+      .input {
+        background-color: #eee;
+      }
+    }
+  }
+
+  .autocomplete {
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 7px 8px 50px 0 rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    .suggestion-list {
+      padding: 0;
+
+      .suggestion-item {
+        padding: 6px 25px;
+        margin: 5px 0;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: #7e89a5;
+        cursor: pointer;
+
+        &:hover {
+          color: #262626;
+          background-color: #f5f5f5;
+        }
+      }
+    }
+  }
+}
+
+.tags {
+  .input {
+    height: 34px;
+  }
+}

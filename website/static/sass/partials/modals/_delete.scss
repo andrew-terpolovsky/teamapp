@@ -1,0 +1,22 @@
+.modal-delete {
+
+  h3 {
+    margin: 0;
+    padding: 30px 20px;
+    font-size: 23px;
+    color: #393939;
+
+    b {
+      font-weight: 600;
+      color: #000000;
+    }
+  }
+
+  .button-set {
+    padding: 10px 0;
+    button {
+      min-width: 140px;
+      margin: 0 5px;
+    }
+  }
+}

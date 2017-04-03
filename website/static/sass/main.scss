@@ -1,0 +1,42 @@
+// bower:scss
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../bower_components/font-awesome/scss/font-awesome";
+
+// project:scss
+@import "partials/reset";
+@import "partials/global";
+@import "partials/variables";
+
+//layouts:scss
+@import "partials/layouts/home";
+@import "partials/layouts/dashboard";
+@import "partials/layouts/modal";
+
+//controls:scss
+@import "partials/controls/scroll";
+@import "partials/controls/select";
+@import "partials/controls/icons";
+@import "partials/controls/form";
+@import "partials/controls/tags-input";
+@import "partials/controls/emoji";
+
+//pages:scss
+@import "partials/pages/auth";
+@import "partials/pages/profile";
+@import "partials/pages/invite";
+@import "partials/pages/channel";
+@import "partials/pages/tasks";
+
+//filemanager
+@import "partials/filemanager/style";
+
+//tasks
+@import "partials/tasks/index";
+@import "partials/tasks/channel";
+
+//modals
+@import "partials/modals/_channel-members";
+@import "partials/modals/_create-channel";
+@import "partials/modals/_files";
+@import "partials/modals/_invite";
+@import "partials/modals/_delete";

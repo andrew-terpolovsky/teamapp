@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="$resolve.channel.type == 1" ng-bind="'Shared files with ' + $resolve.channel.private_channel_name"></h3>
+    <h3 class="modal-title" ng-if="$resolve.channel.type == 2" ng-bind="$resolve.channel.name + ' files'"></h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="b-modal-body__search">
+            <div class="b-search">
+                <div class="b-search__input">
+                    <input type="text" class="b-input b-input_search" placeholder="Search in files"
+                        ng-model="searchQuery" ng-model-options="{debounce: {'default':500,'blur':0}}">
+                </div>
+            </div>
+        </div>
+        <div ng-show="filtered_files.length">
+            <div class="b-files__item"
+                ng-repeat="file in filtered_files = (files_searched|filter:{original_name: searchQuery})"
+                ng-click="selectFile(file)" ng-class="{'selected': file.selected}">
+                <div class="b-modal-item">
+                    <div class="b-modal-item__main">
+                        <div class="b-modal-item__column b-file-item__file-icon">
+                            <div class="b-icon b-icon_file"></div>
+                        </div>
+                        <div class="b-modal-item__column b-file-item__file-name">
+                            <a class="b-link b-link_file" ng-href="{[getSingleDownloadLink(file.id)]}" target="_blank" ng-bind="file.original_name"></a>
+                        </div>
+                        <div class="b-modal-item__column b-file-item__file-description">
+                            <div class="b-file-description">
+                                <div class="b-file-description__type" ng-bind="file.content_type"></div>
+                                <div class="b-file-description__size" ng-bind="file.size|bytes"></div>
+                            </div>
+                        </div>
+                        <div class="b-modal-item__column b-file-item__file-delete">
+                            <div class="b-file-description">
+                                <a href="" class="b-link b-link_file" ng-click="unbindFileFromChannel(file)">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="btn-block load-more text-center" ng-hide="!has_more || !last_id" ng-click="loadMoreFiles()">
+                Show more
+            </a>
+        </div>
+    </div>
+</div>

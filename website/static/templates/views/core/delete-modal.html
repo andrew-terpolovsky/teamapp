@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        Confirmation
+    </h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body modal-delete">
+    <div class="scrollbar-macosx text-center">
+        <div class="content">
+            <h3>
+                Are you sure you want to
+                <span ng-bind="$resolve.action"></span>
+                the <b ng-if="$resolve.bold" ng-bind="$resolve.name"></b>
+                    <span ng-if="!$resolve.bold" ng-bind="$resolve.name"></span>
+                ?
+            </h3>
+            <div class="button-set">
+                <button type="button" class="btn btn-danger" ng-click="$close()">
+                    Yes, <span ng-if="!$resolve.action">archive</span><span ng-if="$resolve.action">delete</span>
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="$dismiss()">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

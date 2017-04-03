@@ -1,0 +1,9 @@
+<div class="friend-list-item">
+    <div class="img-circle avatar"
+         ng-style="{'background-image': 'url(' + (data.get_picture ? data.get_picture : '/static/img/profile.png') + ')'}">
+    </div>
+    <div class="text">
+        <span ng-bind="data.get_full_name || data.email"></span>
+        <span class="highlight" ng-bind-html="$highlight($getDisplayText())"></span>
+    </div>
+</div>

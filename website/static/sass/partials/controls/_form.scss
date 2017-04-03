@@ -1,0 +1,38 @@
+@import "../variables";
+
+form {
+  .form-group {
+    margin: 0;
+
+    & > label {
+      font-size: 11px;
+      color: #9099b0;
+      margin-bottom: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+  }
+
+  .error-block {
+    min-height: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 5px;
+    margin-bottom: 0;
+
+    &.big {
+      min-height: 48px;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+      color: $error-color;
+      margin: 0;
+
+      li {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+<div class="page-title">
+    <span>Profile settings</span>
+</div>
+<div class="page-content profile-page">
+    <div class="scrollbar-macosx">
+        <form name="profileForm" role="form" ng-submit="update()">
+            <h2>Profile settings</h2>
+
+            <div class="form-group profile-picture" ng-class="{'has-error': profile.errors.image}">
+                <label for="name" class="control-label">PROFILE PICTURE</label>
+
+                <div>
+                    <span class="img-circle" ng-style="profileImg"></span>
+
+                    <div class="img-upload-wrapper">
+                        <div id="upload-wrapper">
+                            <button type="button" id="upload-logo" class="btn btn-dark btn-block" ng-click="uploadAvatar()">
+                                <i class="icon image-icon"></i>
+                                Change Image
+                            </button>
+                        </div>
+                        <div class="upload-progress progress active">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                 aria-valuemax="100">
+                                <span class="sr-only">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="error-block" form-errors="profile.errors.image"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': profile.errors.full_name}">
+                <label for="name" class="control-label">NAME</label>
+                <input type="text" class="form-control input-lg"
+                       id="name"
+                       placeholder="Enter your full name"
+                       ng-model="profile.full_name"
+                       name="name">
+
+                <div class="error-block" form-errors="profile.errors.full_name"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': profile.errors.timezone}">
+                <label for="timezone" class="control-label">TIME ZONE</label>
+
+                <ui-select ng-model="profile.timezone">
+                    <ui-select-match placeholder="Search time zone">
+                        {[$select.selected]}
+                    </ui-select-match>
+                    <ui-select-choices repeat="tz in timezones | filter: $select.search">
+                        <span ng-bind-html="tz | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+                <div class="error-block" form-errors="profile.errors.timezone"></div>
+            </div>
+            <br>
+
+            <h2>Change password</h2>
+
+            <div class="form-group" ng-class="{'has-error': profile.errors.old_password}">
+                <label for="name" class="control-label">CURRENT PASSWORD</label>
+                <input type="password" class="form-control input-lg"
+                       id="old_password"
+                       placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+                       name="old_password"
+                       ng-model="profile.old_password">
+
+                <div class="error-block" form-errors="profile.errors.old_password"></div>
+            </div>
+            <div class="form-group change-password" ng-class="{'has-error': profile.errors.confirm_password}">
+                <label for="name" class="control-label">NEW PASSWORD</label>
+                <input type="password"
+                       class="form-control input-lg"
+                       id="new_password"
+                       placeholder="Enter password"
+                       name="password"
+                       ng-model="profile.new_password">
+                <input type="password"
+                       class="form-control input-lg"
+                       id="confirm_password"
+                       placeholder="Repeat password"
+                       name="confirm_password"
+                       ng-model="profile.confirm_password">
+
+                <div class="error-block big">
+                    <div form-errors="[profile.errors.new_password[0]]"></div>
+                    <div form-errors="profile.errors.non_field_errors"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                <span class="glyphicon glyphicon-refresh"></span> Update Profile
+            </button>
+        </form>
+    </div>
+</div>

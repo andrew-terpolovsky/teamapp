@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        Tasks
+    </h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div>
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content channel-tasks">
+            <div class="top-actions clearfix">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <ui-select class="hide channel-tasks__filter_assignee" ng-model="filterTasksByAssignee.assignee_filter" ng-class="{show: !task.done}">
+                        <ui-select-match placeholder="Filter by assignee" allow-clear="true">
+                            {[$select.selected.full_name || $select.selected.username]}
+                        </ui-select-match>
+                        <ui-select-choices repeat="data in channel.members | filter: $select.search">
+                            <div class="friend-list-item channel-assignees">
+                                <div class="img-circle avatar" ng-style="updateAvatar(data.image)">
+                                </div>
+                                <div class="text">
+                                    <span ng-bind="data.full_name || data.username"></span>
+                                    <!--<span class="highlight"-->
+                                          <!--ng-bind-html="data.username | highlight: $select.search"></span>-->
+                                </div>
+                            </div>
+                        </ui-select-choices>
+                    </ui-select>
+                    <div class="hide" ng-class="{show: task.done}" ng-bind="assignee.full_name">
+                    </div>
+                    <!--<div class="error-block" form-errors="task.errors.assignee"></div>-->
+                    <button class="btn btn-primary" ng-click="openTask()">
+                    <i class="icon add-task-icon"></i> Add Task
+                </button>
+                </div>
+            </div>
+            <div class="tasks-list">
+                <div ng-repeat="task in tasks|filter:filterTasksByAssignee" class="task-item" ng-click="openTask(task, $index)">
+                    <div class="top-line" ng-class="[task.assignee ? 'line-' + task.status: 'line-unassigned']">
+                        <i class="icon"
+                           ng-class="[task.assignee ? 'status-' + task.status: 'status-unassigned']"
+                           uib-tooltip="{[task.assignee ? task.get_status_display : 'Unassigned']}"
+                           tooltip-placement="right">
+                        </i>
+                        <span class="title" ng-bind="task.name"></span>
+                    </div>
+                    <div ng-if="task.preview" class="preview" ng-style="{'background-image': '{[task.preview]}' }">
+                    </div>
+                    <div class="middle-line">
+                        <div class="assignee" ng-bind="task.assignee.get_full_name || task.owner.get_full_name">
+                        </div>
+                        <img class="img-circle"
+                             ng-show="task.assignee.get_picture || task.owner.get_picture"
+                             ng-src="{[task.assignee.get_picture || task.owner.get_picture]}"
+                             alt="" src="">
+                    </div>
+                    <ul class="clearfix">
+                        <li>
+                            <i class="icon chat-icon"></i>
+                            <span ng-bind="task.activity_count"></span>
+                        </li>
+                        <li>
+                            <i class="icon attachments-icon"></i>
+                            <span ng-bind="task.files.length"></span>
+                        </li>
+                        <li ng-class="{expired: task.expired}">
+                            <i class="icon time-icon"></i>
+                            <span ng-bind="task.due_date|date:'MMM d, yyyy'"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="media-left">
+    <a href="#">
+        <img class="media-object" ng-src="{[message.sender.image || '/static/img/profile.png']}">
+    </a>
+</div>
+<div class="media-body">
+    <h4 class="media-heading">
+        <a href="" ng-click="openPrivateChatWithChannelMember(message)" ng-bind="(message.sender.full_name||message.sender.username)|short_name"></a>
+        <i></i>
+        <span ng-bind="message.created|amParse:'YYYY-MM-DDTHH:mm:ss.SSSZ'| amLocal | amDateFormat:'MM.DD.YYYY HH:mm:ss'"></span>
+    </h4>
+
+    <div class="message-content">
+        <div class="row">
+            <div class="col-sm-11 message-content-left">
+                <div class="slider-wrapper">
+                    <ul class="files-slider">
+                        <li class="files" ng-repeat="file in message.files">
+                            <a ng-class="{'file-is-deleted': file.is_deleted}" ng-if="!file.file_preview" ng-href="{[file.is_deleted ? '' : getSingleDownloadLink(message.id, file.id)]}" target="_blank" ng-bind="file.original_name"></a>
+                            <a ng-class="{'file-is-deleted': file.is_deleted}" ng-if="file.file_preview" ng-href="{[file.is_deleted ? '' : getSingleDownloadLink(message.id, file.id)]}" target="_blank">
+                                <!--<span class="message-content-file_type">png</span> {[file.original_name]}-->
+                                 <img class="message-content-file_type" ng-src="{[file.file_preview]}" alt="{[file.original_name]}"/> {[file.original_name]}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-1 message-content-right">
+                <a class="btn icon-chat download-icon" ng-href="{[getBulkDownloadLink(message.id)]}"></a>
+            </div>
+        </div>
+    </div>
+</div>

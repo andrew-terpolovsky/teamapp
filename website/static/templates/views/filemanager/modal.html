@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h3 class="modal-title">File Manager</h3>
+    <button ng-click="$dismiss()" class="icon big-close-icon"></button>
+</div> 
+<div class="modal-body">
+    <div class="scrollbar-macosx">
+        <div class="content fm-modal">
+            <div class="top-actions">
+                <div class="clearfix">
+                    <div class="big">
+                        {[upload_progress.bytes|bytes]}/{[upload_progress.total|bytes]} - {[upload_progress.percent * 100]}%
+                        <div uploader-url="uploader_url" class="fm-dropzone"
+                             file-manager="{drop: true, click: true, uploader_options: {multiple: true, url: uploader_url}}"
+                             upload-callback="addUploadedFile(file)"
+                             upload-progress="upload_progress"
+                             fm-click-upload>
+                            <div fm-drop-upload></div>
+                        </div>
+                    </div>
+                    <div class="small">
+                        <button class="btn btn-primary btn-block" type="button"
+                                ng-click="ok()" ng-disabled="!selected_files.length">Confirm
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <form class="big form">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg"
+                                   placeholder="Search in files"
+                                   ng-model="searchQuery"
+                                   ng-model-options="{debounce: {'default':500,'blur':0}}">
+                        </div>
+                    </form>
+                    <div class="small">
+                        <div class="dropdown">
+                            <a href="javascript://" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Actions <span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript://" ng-click="deleteFiles()">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="filtered_files.length">
+                <ul class="files-list files-interactive">
+                    <li ng-repeat="file in filtered_files = (files_searched|filter:{original_name: searchQuery})"
+                        ng-click="selectFile(file)" ng-class="{'selected': file.selected}">
+
+                        <a ng-href="{[getSingleDownloadLink(file.id)]}" target="_blank" ng-bind="file.original_name"></a>
+
+                        <div>
+                            <span ng-bind="file.content_type"></span>
+                            <span ng-bind="file.size|bytes"></span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="" class="btn-block load-more text-center" ng-hide="!has_more || !last_id" ng-click="loadMoreFiles()">
+                    Show more
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

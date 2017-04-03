@@ -1,0 +1,26 @@
+.b-friends__item,
+.b-invite__submit,
+.b-invite__input {
+  margin-bottom: 10px;
+}
+
+.invite__members-list {
+  margin-top: 20px;
+}
+
+.b-invite-friend__search {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+.b-invite-friend-search__search-input {
+  display: table-cell;
+  width: 420px;
+  float: left;
+}
+
+.b-invite-friend-search__submit-button {
+  display: table-cell;
+  float: right;
+}

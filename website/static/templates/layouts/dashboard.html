@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <div class="row dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar-wrapper">
+            <div class="profile-info dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                        <span class="avatar">
+                            <img ng-src="{[user.get_picture || '/static/img/profile.png']}">
+                            <span class="incoming-badge">0</span>
+                        </span>
+                    <span ng-bind="user.get_full_name"></span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-class="{'active': route=='dashboard.profile'}">
+                        <a ui-sref="dashboard.profile">
+                            <i class="glyphicon glyphicon-cog"></i> Profile Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="home.logout">
+                            <i class="glyphicon glyphicon-off"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="sidebar-nav" nav-height>
+                <li class="tasks-menu">
+                    <div class="sidebar-nav-header">
+                        TASKS <a href="" ng-click="createTask()" class="btn-plus"></a>
+                    </div>
+                    <div class="tasks-list-wrapper">
+                        <div class="tasks-list scrollbar-macosx" style="max-height: 123px;">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a ng-class="{active: route=='dashboard.tasks.my'}" ui-sref="dashboard.tasks.my">
+                                        <i class="icon tasks-icon"></i>
+                                        My Tasks
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-class="{active: route=='dashboard.tasks.team'}" ui-sref="dashboard.tasks.team">
+                                        <i class="icon team-icon"></i>
+                                        Team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-class="{active: route=='dashboard.tasks.archived'}" ui-sref="dashboard.tasks.archived">
+                                        <i class="icon other-icon"></i>
+                                        Archived
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="chat-menu">
+                    <div class="sidebar-nav-header">
+                        Channels (<span ng-bind="(user.channels|filter:{type:2, opened:true}).length"></span>)
+                        <a href="" class="btn-plus" ng-click="createChannel()"></a>
+                    </div>
+                    <div class="chat-list-wrapper">
+                        <div class="chat-list scrollbar-macosx">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="channel in user.channels|filter:{type:2}|orderBy:[getOpenedProperty, getNameProperty]:false:stringAlphabeticalComparator" ng-class="{'channel-archived': !channel.opened}">
+                                    <a ng-class="{active: channel.active}" ng-if="channel.opened" ui-sref="dashboard.channels.detail({channelId: channel.channel_uid})">
+                                        # <span ng-bind="channel.name"></span>&nbsp;
+                                        <span class="badge" ng-if="channel.counter_unread > 0" ng-bind="channel.counter_unread"></span>
+                                    </a>
+                                    <a ng-class="{active: channel.active}" ng-if="!channel.opened" href="" ui-sref="dashboard.channels.detail({channelId: channel.channel_uid})">
+                                        <span ng-bind="channel.name"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="invite-menu">
+                    <a ui-sref="dashboard.invite" class="btn btn-primary btn-block">
+                        <i class="icon invite-icon"></i>
+                        Invite Others
+                    </a>
+                </li>
+                <li class="pm-menu">
+                    <div class="sidebar-nav-header">
+                        Private Messages (<span ng-bind="(user.private_chats|filter:{'private_channel_uid': '!null', 'private_channel_opened': 'true'}).length"></span>)
+                        <a href="" class="btn-plus" ng-click="friendList()"></a>
+                    </div>
+                    <div class="pm-list-wrapper">
+                        <div class="pm-list scrollbar-macosx">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="p_chat in user.private_chats|filter:{'private_channel_uid': '!null', 'private_channel_opened': 'true'}">
+                                    <a ng-class="{active: p_chat.active}" ui-sref="dashboard.channels.detail({channelId: p_chat.private_channel_uid})">
+                                        <span ng-bind="p_chat.full_name || p_chat.username"></span>
+                                        <span class="badge" ng-if="p_chat.counter_unread > 0" ng-bind="p_chat.counter_unread"></span>
+                                        <div class="close-private-message">
+                                            <span class="btn_close-private-message" ng-click="closePrivateChat($event, p_chat)">X</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-wrapper view-animation" ui-view ng-class="[route_ctrl]">
+        </div>
+
+        <div manage-channel></div>
+
+        <div id="widely-used-uploader"></div>
+
+        <div class="progress-loader"></div>
+    </div>
+</div>
+

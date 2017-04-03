@@ -1,0 +1,12 @@
+{% extends 'emails/base.html' %}
+{% block content %}
+    <div style="font-size: 18px;padding-bottom: 5px;color:white;">Hello -</div>
+    <div style="color:white;">
+        Please click the button below to activate your membership in DoIQApp:
+    </div>
+    <div style="text-align: center">
+        <a style="color: white;text-decoration: none;border-radius: 4px;text-transform: uppercase;padding: 10px 39px;margin: 20px 0 10px 0;display: inline-block;background: #398bce;font-weight: bold;letter-spacing: 2px;" href="{{ url }}">
+            Activate
+        </a>
+    </div>
+{% endblock %}

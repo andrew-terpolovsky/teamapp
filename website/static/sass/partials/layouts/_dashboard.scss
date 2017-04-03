@@ -1,0 +1,279 @@
+.dashboard {
+  .sidebar-wrapper {
+    width: $side-menu-width;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #313541;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    .profile-info {
+      background-color: #2e313c;
+      height: 100px;
+      font-size: 14px;
+      border-bottom: 1px solid #3c3f4b;
+      box-shadow: inset 0px -1px 0 #292d36;
+      padding: 0 0 5px 0;
+
+      & > .dropdown-menu {
+        margin-left: -100px;
+        width: 200px;
+        left: 48%;
+      }
+
+      & > a {
+        color: #ffffff;
+        text-align: center;
+        display: block;
+        line-height: 100px;
+        font-weight: 600;
+
+        .caret {
+          margin-left: 8px;
+        }
+
+        .avatar {
+          position: relative;
+          display: inline-block;
+          line-height: 52px;
+
+          img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+          }
+
+          .incoming-badge {
+            background-color: #d65f1a;
+            color: white;
+            border: 3px solid #2f323e;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            display: inline-block;
+            line-height: 20px;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            font-size: 12px;
+            font-weight: 700;
+          }
+        }
+
+        &:hover, &:active, &:focus {
+          text-decoration: none;
+        }
+      }
+
+    }
+
+    .sidebar-nav {
+      padding-left: 0;
+      margin-top: -$header-height;
+      padding-top: $header-height;
+      height: 100%;
+
+      & > li {
+        border-bottom: 1px solid #3c3f4b;
+        box-shadow: 0 1px 0 0 #2c303a;
+        display: block;
+
+        & > div.sidebar-nav-header {
+          color: #fff;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 12px;
+          display: block;
+          line-height: 32px;
+          padding: 6px 12px;
+          letter-spacing: 0.12em;
+          position: relative;
+
+          .btn-plus {
+            background: #d65f1a;
+            border-radius: 50%;
+            height: 32px;
+            width: 32px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            float: right;
+
+            &::after {
+              content: "";
+              background: url("/static/img/icon_sprite.png") 0 -10px;
+              height: 12px;
+              width: 12px;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+
+        &.tasks-menu, &.chat-menu, &.invite-menu, &.pm-menu {
+          padding-bottom: 10px;
+
+          li {
+
+            a {
+              line-height: 44px;
+              color: #a6b1cc;
+              text-decoration: none;
+              font-size: 13px;
+              display: block;
+              padding-left: 20px;
+              border-left: 3px solid transparent;
+
+              i {
+                margin: -4px 10px 0 0;
+              }
+
+              .close-private-message {
+                display: inline-block;
+                float: right;
+                margin-right: 20px;
+                margin-top: 10px;
+
+                .btn_close-private-message {
+                  border: 2px solid #a6b1cc;
+                  border-radius: 50%;
+                  width: 25px;
+                  height: 25px;
+                  font-weight: 600;
+                  display: block;
+                  line-height: 22px;
+                  text-align: center;
+
+                  &.active,
+                  &:hover {
+                    border-color: white;
+                    color: white;
+                  }
+                }
+              }
+
+              &.active {
+                border-left: 3px solid #3c93da;
+                background: #2f323e;
+                color: white;
+                .btn_close-private-message {
+                  border-color: white;
+                }
+              }
+
+              &:hover {
+                background: #2f323e;
+                color: white;
+                .btn_close-private-message {
+                  border-color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .invite-menu {
+        padding: 10px 12px;
+
+        a {
+          text-transform: uppercase;
+        }
+      }
+
+    }
+
+  }
+
+  .content-wrapper {
+    margin-left: $side-menu-width;
+  }
+
+  .page-title {
+    height: $header-height;
+    font-size: 24px;
+    line-height: 55px;
+    padding: 20px;
+    border-bottom: 1px solid #e0e7eb;
+    letter-spacing: 0.03em;
+    position: fixed;
+    left: $side-menu-width;
+    right: 0;
+    background: white;
+    z-index: 1001;
+
+    & > * {
+      vertical-align: middle;
+    }
+  }
+
+  .view-animation.ng-enter, .view-animation.ng-leave {
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    position: fixed;
+    width: 100%;
+  }
+
+  .view-animation.ng-enter {
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+
+  .view-animation.ng-enter {
+    opacity: 0;
+  }
+
+  .view-animation.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+
+  .view-animation.ng-leave {
+    opacity: 1;
+  }
+
+  .view-animation.ng-leave.ng-leave-active {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    .page-title {
+      font-size: 30px;
+      height: $header-height;
+      padding: 20px 30px;
+    }
+
+    .sidebar-wrapper {
+      .profile-info {
+        height: $header-height;
+
+        & > a {
+          line-height: $header-height;
+
+          .avatar {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+    .page-content {
+      padding: 140px 30px 30px 30px;
+    }
+
+    .p-t-lg {
+      padding-top: 50px;
+    }
+  }
+}

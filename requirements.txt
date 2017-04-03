@@ -1,0 +1,45 @@
+Django==1.9.7
+gunicorn==18.0
+
+# Images
+Pillow==3.2.0
+python-magic
+
+# PostgreSQL adapter
+psycopg2==2.6.1
+
+#Python libs
+pytz==2016.6.1
+six==1.10.0
+
+#Django packages
+djangorestframework==3.3.3
+djangorestframework-jwt==1.8.0
+django_compressor==2.0
+django-libsass==0.7.0
+django-storages==1.4.1
+django-extensions==1.6.7
+django-anymail==0.4.2
+django-smtp-ssl==1.0
+django-url-filter==0.2.0
+django-passwords==0.3.12
+django-dbbackup==2.5.0
+
+django-crontab==0.7.1
+
+
+#AWS libs
+django-s3-storage==0.9.10
+boto3==1.4.1
+
+#Celery
+celery==3.1.24
+django-celery==3.1.17
+
+# tornado and helpful libs for it
+tornado==4.4
+sockjs-tornado==1.0.3
+momoko==2.2.3
+redis
+tornado-redis==2.4.18
+sorl-thumbnail==12.3

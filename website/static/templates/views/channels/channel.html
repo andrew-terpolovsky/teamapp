@@ -1,0 +1,75 @@
+<div class="channel-page">
+    <div class="page-title">
+        <div class="row">
+            <div class="channel-title col-sm-3">
+                <span ng-bind="channel.type != 1 ? channel.name : private_channel_name"></span>
+                <small ng-bind="'created by ' + channel.owner.full_name "
+                       ng-if="channel.type != 1 && channel.opened"></small>
+            </div>
+            <div class="actions col-sm-9">
+                <button class="btn-icon icon team-icon" ng-click="channelMembers()" ng-if="channel.type != 1">
+                </button>
+                <button class="btn-icon icon-chat attachments-icon" ng-click="searchChannelFiles()">
+                </button>
+                <button class="btn btn-primary" ng-click="archiveChannel()"
+                        ng-if="channel.type != 1 && channel.opened && user.id == channel.owner.id">
+                    Archive channel
+                </button>
+                <button class="btn btn-warning" ng-click="invitePeople()"
+                        ng-if="channel.type != 1 && channel.opened && user.id == channel.owner.id">
+                    <i class="icon-chat add-member-icon"></i> Invite People
+                    <span class="btn-summary" ng-bind="channel.members.length" ng-if="channel.members.length"></span>
+                </button>
+                <button class="btn btn-primary" ng-click="openTasks()"
+                        ng-if="channel.type != 1 && channel.opened">
+                    <i class="icon manage-task-icon"></i> Manage Tasks
+                    <span class="btn-summary" ng-bind="channel.tasks_amount" ng-if="channel.tasks_amount"></span>
+                </button>
+                <button ng-if="channel.type == 1" class="btn btn-primary btn-lg" ng-click="createTask()">
+                    <i class="icon add-task-icon"></i> Add Task
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="row scrollbar-macosx chat-scroll-wrapper" scroll-id="{[scroll_id]}" id="chat-scroll-wrapper">
+            <div class="col-md-12">
+                <div class="row channel-messages" channel-messages>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area" ng-show="channel.opened">
+            <div class="media">
+                <div class="media-left">
+                    <a href="">
+                        <img class="media-object" ng-src="{[user.get_picture || '/static/img/profile.png']}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <span ng-bind="who_is_typing"></span>
+                    <textarea-input id="message_input" cols="60" rows="1" class="form-control input-lg"
+                                    msd-elastic=""
+                                    wdt-emoji
+                                    emoji-api-controller="emoji_api_controller"
+                                    ng-keypress="keyboardPress($event)"
+                                    ng-model="message_input"
+                                    style=""></textarea-input>
+
+                    <div class="message-actions">
+                        <button type="button" class="btn btn-primary" ng-click="sendMessage()">
+                            <i class="icon-chat send-icon"></i> Send message
+                        </button>
+                        <button type="button" class="btn-icon icon-chat attachments-icon" ng-click="addFiles()">
+                        </button>
+                        <button type="button" ng-click="openEmojiPicker($event)" id="emoji-pick-icon" class="btn-icon icon-chat emoji-icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-area" ng-show="!channel.opened">
+            Channel is read-only because of it is closed.
+        </div>
+    </div>
+</div>

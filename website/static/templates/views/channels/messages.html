@@ -1,0 +1,7 @@
+<div class="day-divider" ng-bind="now|amDateFormat:'MMMM Do'"></div>
+<div id="top" class="text-center" ng-show="loading">Loading channel...</div>
+<div class="media col-md-12" ng-class="'msg' + message.id" ng-repeat="message in messages|orderBy:'id'">
+  <text-message class="text-message" ng-if="message.type == 1"></text-message>
+  <file-message class="file-message" ng-if="message.type == 2"></file-message>
+  <notification-message class="notification-message" ng-if="message.type == 3"></notification-message>
+</div>

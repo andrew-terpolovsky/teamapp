@@ -1,0 +1,33 @@
+<div class="media-left">
+    <a href="#">
+        <img class="media-object" ng-src="{[message.sender.image || '/static/img/profile.png']}">
+    </a>
+</div>
+<div class="media-body">
+    <h4 class="media-heading">
+        <a href="javascript://" ng-bind="((message.sender.full_name||message.sender.username)|short_name) || 'System'"></a>
+        <i></i>
+        <span ng-bind="message.created|amParse:'YYYY-MM-DDTHH:mm:ss.SSSZ'| amLocal | amDateFormat:'MM.DD.YYYY HH:mm:ss'"></span>
+    </h4>
+
+    <div class="message-content">
+        <div class="row">
+            <div class="col-sm-11 message-content-left">
+                <i class="icon notification-icon"></i><span compile-message content="message.message"></span>
+            </div>
+            <!--<div class="col-sm-1 message-content-right">-->
+                <!--<div class="dropdown">-->
+                    <!--<button class="btn-icon icon-chat submenu-icon dropdown-toggle"-->
+                            <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>-->
+                    <!--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
